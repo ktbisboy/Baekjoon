@@ -10,17 +10,13 @@ int main() {
 	const int R = 31;
 	const int M = 1234567891;
 
-	int sum = 0;
+	long long sum = 0;
+	long long r = 1;
 	for (int i = 0; i < l; ++i) {
 		int a = (str[i] - 'a' + 1);
-
-		int r = 1;
-		for (int j = 0; j < i; ++j) {
-			r *= R;
-		}
-		sum += a * r;
+		sum = (sum + a * r) % M;
+		r = (r * R) % M;
 	}
 
-	int h = sum % M;
-	cout << h;
+	cout << sum;
 }
