@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm>
-#include <climits>
 
 using namespace std;
 
@@ -11,21 +10,16 @@ int main() {
 	int a, b;
 	cin >> a >> b;
 
-	int maxI = INT_MIN;
+	int gcd = -1;
+	int r = -1;
+
+	r = abs(a - b);
 	for (int i = 1; i <= min(a, b); ++i) {
-		if (a % i == 0 && b % i == 0) {
-			maxI = i;
-		}
+		if (b % i == 0 && r % i == 0)
+			gcd = i;
 	}
 
-	int result = maxI;
-	while (true) {
-		if (result % a == 0 && result % b == 0) {
-			break;
-		}
+	int lcm = (a * b) / gcd;
 
-		result += maxI;
-	}
-
-	cout << maxI << " " << result;
+	cout << gcd << " " << lcm;
 }
