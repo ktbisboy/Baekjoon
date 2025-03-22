@@ -18,36 +18,21 @@ int main()
 	for (int i = 0; i < n; ++i) {
 		cin >> a[i];
 	}
+	sort(a.begin(), a.end());
 
 	int m;
 	cin >> m;
-	vector<pair<int, int>> b(m);
+	vector<int> b(m);
 	for (int i = 0; i < m; ++i) {
-		cin >> b[i].first;
-		b[i].second = i;
+		cin >> b[i];
 	}
 
-	sort(a.begin(), a.end());
-	sort(b.begin(), b.end());
-
-	int idx1 = 0;
-	int idx2 = 0;
-	while (idx2 < b.size()) {
-		while (idx1 < a.size()&& a[idx1] < b[idx2].first) {
-			++idx1;
-		}
-
-		if (idx1 < a.size() && a[idx1] == b[idx2].first) {
-			b[idx2].first = 1;
+	for (int i = 0; i < m; ++i) {
+		if (binary_search(a.begin(), a.end(), b[i])) {
+			cout << 1 << "\n";
 		}
 		else {
-			b[idx2].first = 0;
+			cout << 0 << "\n";
 		}
-		++idx2;
-	}
-
-	sort(b.begin(), b.end(), cmp);
-	for (pair<int, int> p : b) {
-		cout << p.first << "\n";
 	}
 }
