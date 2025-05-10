@@ -2,17 +2,15 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] nums) {
-        int n = nums.length;
-        int pick = n/2;
-        
-        Set<Integer> distS = new HashSet<>();
-        for(int i : nums) {
-            distS.add(i);
+        Set<Integer> s = new HashSet<>();
+        for(int n : nums) {
+            s.add(n);
         }
         
-        int distC = distS.size();
+        int c1 = s.size();
+        int c2 = (nums.length)/2;
         
-        int answer = Math.min(distC, pick);
+        int answer = Math.min(c1, c2);
         return answer;
     }
 }
