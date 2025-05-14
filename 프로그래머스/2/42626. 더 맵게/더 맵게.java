@@ -2,10 +2,9 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] scoville, int K) {
-        int size = scoville.length;
         PriorityQueue<Integer> pq = new PriorityQueue<>();
-        for(int i=0; i<size; ++i) {
-            pq.add(scoville[i]);
+        for(int n : scoville) {
+            pq.add(n);
         }
         
         int cnt = 0;
@@ -13,15 +12,14 @@ class Solution {
             if(pq.peek() >= K) {
                 return cnt;
             }
-            
             if(pq.size() == 1) {
                 return -1;
             }
             
             int n1 = pq.poll();
             int n2 = pq.poll();
-                
-            int mixed = n1 + (n2*2);
+            
+            int mixed = n1 + (n2 * 2);
             pq.add(mixed);
             ++cnt;
         }
